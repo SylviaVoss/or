@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Init material-color-utilities submodule
+        run: git submodule update --init material3/material-color-utilities
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
