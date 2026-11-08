@@ -20,13 +20,15 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install Android SDK platform 37.0
-        run: |
-          yes | sdkmanager --channel=3 "platforms;android-37.0" "build-tools;37.0.0" || true
-          if [ -d "$ANDROID_SDK_ROOT/platforms/android-37.0" ] && [ ! -e "$ANDROID_SDK_ROOT/platforms/android-37" ]; then
-            ln -s android-37.0 "$ANDROID_SDK_ROOT/platforms/android-37"
-          fi
-          ls "$ANDROID_SDK_ROOT/platforms/"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
       - name: Gradle Build
         run: |
