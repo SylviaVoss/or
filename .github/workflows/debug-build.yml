@@ -30,6 +30,11 @@ jobs:
         with:
           version: 10
 
+      - name: Install web-ui dependencies
+        run: |
+          cd web-ui
+          pnpm install --frozen-lockfile
+
       - name: Gradle Build
         run: |
           chmod +x gradlew
